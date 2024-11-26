@@ -1,0 +1,10 @@
+C:\Users\helen_brandao\source\repos\[AV]EditorTexto\[AV]EditorTexto\bin\Debug\[AV]EditorTexto.exe.config
+C:\Users\helen_brandao\source\repos\[AV]EditorTexto\[AV]EditorTexto\bin\Debug\[AV]EditorTexto.exe
+C:\Users\helen_brandao\source\repos\[AV]EditorTexto\[AV]EditorTexto\bin\Debug\[AV]EditorTexto.pdb
+C:\Users\helen_brandao\source\repos\[AV]EditorTexto\[AV]EditorTexto\obj\Debug\[AV]EditorTexto.csproj.AssemblyReference.cache
+C:\Users\helen_brandao\source\repos\[AV]EditorTexto\[AV]EditorTexto\obj\Debug\_AV_EditorTexto.Properties.Resources.resources
+C:\Users\helen_brandao\source\repos\[AV]EditorTexto\[AV]EditorTexto\obj\Debug\[AV]EditorTexto.csproj.GenerateResource.cache
+C:\Users\helen_brandao\source\repos\[AV]EditorTexto\[AV]EditorTexto\obj\Debug\[AV]EditorTexto.csproj.CoreCompileInputs.cache
+C:\Users\helen_brandao\source\repos\[AV]EditorTexto\[AV]EditorTexto\obj\Debug\[AV]EditorTexto.exe
+C:\Users\helen_brandao\source\repos\[AV]EditorTexto\[AV]EditorTexto\obj\Debug\[AV]EditorTexto.pdb
+C:\Users\helen_brandao\source\repos\[AV]EditorTexto\[AV]EditorTexto\obj\Debug\_AV_EditorTexto.editorTexto.resources
