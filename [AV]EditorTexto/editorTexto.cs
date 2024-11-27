@@ -116,40 +116,17 @@ namespace _AV_EditorTexto
         }
 
     // ARQUIVO
-    /*
+
     private void salvarArquivo()
         {
-            try
+            SaveFileDialog svd = new SaveFileDialog();
+            svd.InitialDirectory = @"c:\C:";
+            svd.Filter = "Images (*.TXT)|*.TXT|" + "pdf (*.pdf)|*.pdf";
+            svd.RestoreDirectory = true;
+            if (svd.ShowDialog() == DialogResult.OK)
             {
-                // PEGA O NOME DO ARQUIVO PARA SALVAR
-                if (this.svfdEditor.ShowDialog() == DialogResult.OK)
-                {
-                    // ABRE UM STREAM PARA ESCRITA E CRIA UM STREAMWRITER PARA IMPLEMENTAR O STREAM
-                    FileStream fs = new FileStream(svfdEditor.FileName, FileMode.OpenOrCreate, FileAccess.Write);
-                    StreamWriter m_streamWriter = new StreamWriter(fs);
-                    m_streamWriter.Flush();
-
-                    // ESCREVE PARA O ARQUIVO USANDO A CLASSE STREAMWRITER
-                    m_streamWriter.BaseStream.Seek(0, SeekOrigin.Begin);
-
-                    // ESCREVE NO CONTROLE DO RICHTEXTBOX
-                    m_streamWriter.Write(this.rtxtbPrincipal.Text);
-
-                    // FECHA O ARQUIVO
-                    m_streamWriter.Flush();
-                    m_streamWriter.Close();
-                }
+                rtxtbPrincipal.SaveFile(svd.FileName, RichTextBoxStreamType.PlainText);
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro : " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-    */
-
-        private void salvarArquivo()
-        {
-
         }
 
     private void chamarSalvarArquivo()
@@ -165,44 +142,42 @@ namespace _AV_EditorTexto
 
     private void abrirArquivo()
         {
-            // DEFINE AS PROPRIEDADES DO ARQUIVO
-            //OpenFileDialog
-            this.pfdEditor.Multiselect = true;
-            this.pfdEditor.Title = "Selecionar Arquivo";
-            pfdEditor.InitialDirectory = @"C:\Dados\";
+            //OPENFILEDIALOG
+            this.openFileDialog1.Multiselect = false;
+            this.openFileDialog1.Title = "Selecionar Arquivos";
+            openFileDialog1.InitialDirectory = @"C:\";
 
-            // FILTRA PARA EXIBIR SOMENTE ARQUIVOS DE TEXTOS
-            pfdEditor.Filter = "Images (*.TXT)|*.TXT|" + "All files (*.*)|*.*";
-            pfdEditor.CheckFileExists = true;
-            pfdEditor.CheckPathExists = true;
-            pfdEditor.FilterIndex = 1;
-            pfdEditor.RestoreDirectory = true;
-            pfdEditor.ReadOnlyChecked = true;
-            pfdEditor.ShowReadOnly = true;
-            DialogResult dr = this.pfdEditor.ShowDialog();
-            if (dr == System.Windows.Forms.DialogResult.OK)
+            // FILTRO
+            openFileDialog1.Filter = "Images (*.TXT)|*.TXT|" + "All files (*.*)|*.*";
+            openFileDialog1.CheckFileExists = true;
+            openFileDialog1.CheckPathExists = true;
+            openFileDialog1.FilterIndex = 1;
+            openFileDialog1.RestoreDirectory = true;
+            openFileDialog1.ReadOnlyChecked = true;
+            openFileDialog1.ShowReadOnly = true;
+
+            DialogResult dr = this.openFileDialog1.ShowDialog();
+            if(dr == System.Windows.Forms.DialogResult.OK)
             {
                 try
                 {
-                    FileStream fs = new FileStream(pfdEditor.FileName, FileMode.Open, FileAccess.Read);
-                    StreamReader m_streamReader = new StreamReader(fs);
+                    FileStream fs = new FileStream(openFileDialog1.FileName, FileMode.Open, FileAccess.Read);
+                    StreamReader mStreamReader = new StreamReader(fs);
 
-                    // LE O ARQUIVO USANDO A CLASSE StreamReader
-                    m_streamReader.BaseStream.Seek(0, SeekOrigin.Begin);
+                    // LE O ARQUIVO USANDO STREAMREADER
+                    mStreamReader.BaseStream.Seek(0, SeekOrigin.Begin);
 
-                    // LE CADA LINHA DO STREAM E FAZ O PARSE ATE A ULTIMA LINHA
+                    // LE CADA LINHA DO STREAM
                     this.rtxtbPrincipal.Text = "";
-                    string strLine = m_streamReader.ReadLine();
-                    while (strLine != null)
+                    string strLine = mStreamReader.ReadLine();
+                    while(strLine!= null)
                     {
                         this.rtxtbPrincipal.Text += strLine + "\n";
-                        strLine = m_streamReader.ReadLine();
+                        strLine = mStreamReader.ReadLine();
                     }
 
-                    // FECHA O STREAM
-                    m_streamReader.Close();
-                }
-                catch (Exception ex)
+                    mStreamReader.Close();
+                }catch(Exception ex)
                 {
                     MessageBox.Show("Erro : " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -211,7 +186,7 @@ namespace _AV_EditorTexto
 
     private void copiarArquivo()
         {
-            if(rtxtbPrincipal.SelectionLength > 0)
+            if (rtxtbPrincipal.SelectionLength > 0)
             {
                 rtxtbPrincipal.Copy();
             }
@@ -251,13 +226,14 @@ namespace _AV_EditorTexto
 
     private void visualizarImpressao()
         {
-            StringReader leitor = new StringReader(rtxtbPrincipal.Text);
             try
             {
+                string strTexto = rtxtbPrincipal.Text;
+                StringReader leitor = new StringReader(strTexto);
                 PrintPreviewDialog ppdEditor = new PrintPreviewDialog();
                 var prn = ppdEditor;
                 prn.Document = this.pdocumentEditor;
-                prn.Text = "Helen - visualizando a impressão";
+                prn.Text = "Visualizando a impressão";
                 prn.WindowState = FormWindowState.Maximized;
                 prn.PrintPreviewControl.Zoom = 1;
                 prn.FormBorderStyle = FormBorderStyle.Fixed3D;
@@ -308,6 +284,7 @@ namespace _AV_EditorTexto
 
         private void salvarTextoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            salvarArquivo();
             rtxtbPrincipal.Clear();
             rtxtbPrincipal.Focus();
         }
@@ -350,6 +327,12 @@ namespace _AV_EditorTexto
         private void altereACorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             alterarCorFonte();
+        }
+
+        private void novoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            rtxtbPrincipal.Clear();
+            rtxtbPrincipal.Focus();
         }
     }
 }
