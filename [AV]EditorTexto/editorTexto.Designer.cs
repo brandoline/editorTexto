@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(editorTexto));
             this.rtxtbPrincipal = new System.Windows.Forms.RichTextBox();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.mnstrpEditor = new System.Windows.Forms.MenuStrip();
             this.arquivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.novoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.abrirTextoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,11 +59,10 @@
             this.fntdlgEditor = new System.Windows.Forms.FontDialog();
             this.svfdEditor = new System.Windows.Forms.SaveFileDialog();
             this.pfdEditor = new System.Windows.Forms.OpenFileDialog();
-            this.pdEditor = new System.Windows.Forms.PrintDialog();
+            this.prntdlgEditor = new System.Windows.Forms.PrintDialog();
             this.pdocumentEditor = new System.Drawing.Printing.PrintDocument();
-            this.ppdEditor = new System.Windows.Forms.PrintPreviewDialog();
-            this.pdlgEditor = new System.Windows.Forms.PrintDialog();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.prntprvwdlgEditor = new System.Windows.Forms.PrintPreviewDialog();
+            this.tlstrpEditor = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
@@ -81,10 +80,10 @@
             this.toolStripButton12 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton13 = new System.Windows.Forms.ToolStripButton();
             this.svfdlgEditor = new System.Windows.Forms.SaveFileDialog();
-            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.menuStrip1.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
+            this.clrdlgEditor = new System.Windows.Forms.ColorDialog();
+            this.opnfldlgEditor = new System.Windows.Forms.OpenFileDialog();
+            this.mnstrpEditor.SuspendLayout();
+            this.tlstrpEditor.SuspendLayout();
             this.SuspendLayout();
             // 
             // rtxtbPrincipal
@@ -92,22 +91,22 @@
             this.rtxtbPrincipal.ForeColor = System.Drawing.Color.Black;
             this.rtxtbPrincipal.Location = new System.Drawing.Point(24, 55);
             this.rtxtbPrincipal.Name = "rtxtbPrincipal";
-            this.rtxtbPrincipal.Size = new System.Drawing.Size(495, 421);
+            this.rtxtbPrincipal.Size = new System.Drawing.Size(953, 619);
             this.rtxtbPrincipal.TabIndex = 0;
             this.rtxtbPrincipal.Text = resources.GetString("rtxtbPrincipal.Text");
             // 
-            // menuStrip1
+            // mnstrpEditor
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnstrpEditor.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.arquivoToolStripMenuItem,
             this.opçõesToolStripMenuItem,
             this.ajudaToolStripMenuItem,
             this.sairToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(553, 24);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
+            this.mnstrpEditor.Location = new System.Drawing.Point(0, 0);
+            this.mnstrpEditor.Name = "mnstrpEditor";
+            this.mnstrpEditor.Size = new System.Drawing.Size(1008, 24);
+            this.mnstrpEditor.TabIndex = 1;
+            this.mnstrpEditor.Text = "menuStrip1";
             // 
             // arquivoToolStripMenuItem
             // 
@@ -126,47 +125,47 @@
             // novoToolStripMenuItem
             // 
             this.novoToolStripMenuItem.Name = "novoToolStripMenuItem";
-            this.novoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.novoToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.novoToolStripMenuItem.Text = "Novo";
             this.novoToolStripMenuItem.Click += new System.EventHandler(this.novoToolStripMenuItem_Click);
             // 
             // abrirTextoToolStripMenuItem
             // 
             this.abrirTextoToolStripMenuItem.Name = "abrirTextoToolStripMenuItem";
-            this.abrirTextoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.abrirTextoToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.abrirTextoToolStripMenuItem.Text = "Abrir Texto";
             this.abrirTextoToolStripMenuItem.Click += new System.EventHandler(this.abrirTextoToolStripMenuItem_Click);
             // 
             // salvarTextoToolStripMenuItem
             // 
             this.salvarTextoToolStripMenuItem.Name = "salvarTextoToolStripMenuItem";
-            this.salvarTextoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.salvarTextoToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.salvarTextoToolStripMenuItem.Text = "Salvar Texto";
             this.salvarTextoToolStripMenuItem.Click += new System.EventHandler(this.salvarTextoToolStripMenuItem_Click);
             // 
             // mnCopiar
             // 
             this.mnCopiar.Name = "mnCopiar";
-            this.mnCopiar.Size = new System.Drawing.Size(180, 22);
+            this.mnCopiar.Size = new System.Drawing.Size(136, 22);
             this.mnCopiar.Text = "Copiar";
             this.mnCopiar.Click += new System.EventHandler(this.mnCopiar_Click);
             // 
             // colarToolStripMenuItem
             // 
             this.colarToolStripMenuItem.Name = "colarToolStripMenuItem";
-            this.colarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.colarToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.colarToolStripMenuItem.Text = "Colar";
             this.colarToolStripMenuItem.Click += new System.EventHandler(this.colarToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(133, 6);
             // 
             // sairToolStripMenuItem1
             // 
             this.sairToolStripMenuItem1.Name = "sairToolStripMenuItem1";
-            this.sairToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.sairToolStripMenuItem1.Size = new System.Drawing.Size(136, 22);
             this.sairToolStripMenuItem1.Text = "Sair";
             // 
             // opçõesToolStripMenuItem
@@ -291,6 +290,7 @@
             this.sobreToolStripMenuItem.Name = "sobreToolStripMenuItem";
             this.sobreToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
             this.sobreToolStripMenuItem.Text = "Sobre";
+            this.sobreToolStripMenuItem.Click += new System.EventHandler(this.sobreToolStripMenuItem_Click);
             // 
             // sairToolStripMenuItem
             // 
@@ -303,27 +303,27 @@
             // 
             this.pfdEditor.FileName = "openFileDialog1";
             // 
-            // pdEditor
+            // prntdlgEditor
             // 
-            this.pdEditor.UseEXDialog = true;
+            this.prntdlgEditor.UseEXDialog = true;
             // 
-            // ppdEditor
+            // pdocumentEditor
             // 
-            this.ppdEditor.AutoScrollMargin = new System.Drawing.Size(0, 0);
-            this.ppdEditor.AutoScrollMinSize = new System.Drawing.Size(0, 0);
-            this.ppdEditor.ClientSize = new System.Drawing.Size(400, 300);
-            this.ppdEditor.Enabled = true;
-            this.ppdEditor.Icon = ((System.Drawing.Icon)(resources.GetObject("ppdEditor.Icon")));
-            this.ppdEditor.Name = "ppdEditor";
-            this.ppdEditor.Visible = false;
+            this.pdocumentEditor.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.pdocumentEditor_PrintPage);
             // 
-            // pdlgEditor
+            // prntprvwdlgEditor
             // 
-            this.pdlgEditor.UseEXDialog = true;
+            this.prntprvwdlgEditor.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.prntprvwdlgEditor.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.prntprvwdlgEditor.ClientSize = new System.Drawing.Size(400, 300);
+            this.prntprvwdlgEditor.Enabled = true;
+            this.prntprvwdlgEditor.Icon = ((System.Drawing.Icon)(resources.GetObject("prntprvwdlgEditor.Icon")));
+            this.prntprvwdlgEditor.Name = "ppdEditor";
+            this.prntprvwdlgEditor.Visible = false;
             // 
-            // toolStrip1
+            // tlstrpEditor
             // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tlstrpEditor.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton1,
             this.toolStripButton2,
             this.toolStripButton3,
@@ -340,11 +340,11 @@
             this.toolStripSeparator5,
             this.toolStripButton12,
             this.toolStripButton13});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(553, 25);
-            this.toolStrip1.TabIndex = 2;
-            this.toolStrip1.Text = "toolStrip1";
+            this.tlstrpEditor.Location = new System.Drawing.Point(0, 24);
+            this.tlstrpEditor.Name = "tlstrpEditor";
+            this.tlstrpEditor.Size = new System.Drawing.Size(1008, 25);
+            this.tlstrpEditor.TabIndex = 2;
+            this.tlstrpEditor.Text = "toolStrip1";
             // 
             // toolStripButton1
             // 
@@ -464,6 +464,7 @@
             this.toolStripButton11.Name = "toolStripButton11";
             this.toolStripButton11.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton11.Text = "toolStripButton11";
+            this.toolStripButton11.Click += new System.EventHandler(this.imprimirToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
@@ -478,6 +479,7 @@
             this.toolStripButton12.Name = "toolStripButton12";
             this.toolStripButton12.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton12.Text = "toolStripButton12";
+            this.toolStripButton12.Click += new System.EventHandler(this.sobreToolStripMenuItem_Click);
             // 
             // toolStripButton13
             // 
@@ -489,26 +491,26 @@
             this.toolStripButton13.Text = "toolStripButton13";
             this.toolStripButton13.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
             // 
-            // openFileDialog1
+            // opnfldlgEditor
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
+            this.opnfldlgEditor.FileName = "openFileDialog1";
             // 
             // editorTexto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(553, 475);
-            this.Controls.Add(this.toolStrip1);
+            this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.tlstrpEditor);
             this.Controls.Add(this.rtxtbPrincipal);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
+            this.Controls.Add(this.mnstrpEditor);
+            this.MainMenuStrip = this.mnstrpEditor;
             this.Name = "editorTexto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Editor de texto";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            this.mnstrpEditor.ResumeLayout(false);
+            this.mnstrpEditor.PerformLayout();
+            this.tlstrpEditor.ResumeLayout(false);
+            this.tlstrpEditor.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -517,10 +519,9 @@
         #endregion
 
         private System.Windows.Forms.RichTextBox rtxtbPrincipal;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip mnstrpEditor;
         private System.Windows.Forms.ToolStripMenuItem arquivoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem opçõesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ajudaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem novoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem abrirTextoToolStripMenuItem;
@@ -544,12 +545,10 @@
         private System.Windows.Forms.FontDialog fntdlgEditor;
         private System.Windows.Forms.SaveFileDialog svfdEditor;
         private System.Windows.Forms.OpenFileDialog pfdEditor;
-        private System.Windows.Forms.ToolStripMenuItem sobreToolStripMenuItem;
-        private System.Windows.Forms.PrintDialog pdEditor;
+        private System.Windows.Forms.PrintDialog prntdlgEditor;
         private System.Drawing.Printing.PrintDocument pdocumentEditor;
-        private System.Windows.Forms.PrintPreviewDialog ppdEditor;
-        private System.Windows.Forms.PrintDialog pdlgEditor;
-        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.PrintPreviewDialog prntprvwdlgEditor;
+        private System.Windows.Forms.ToolStrip tlstrpEditor;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
@@ -567,9 +566,11 @@
         private System.Windows.Forms.ToolStripButton toolStripButton12;
         private System.Windows.Forms.ToolStripButton toolStripButton13;
         private System.Windows.Forms.SaveFileDialog svfdlgEditor;
-        private System.Windows.Forms.ColorDialog colorDialog1;
+        private System.Windows.Forms.ColorDialog clrdlgEditor;
         private System.Windows.Forms.ToolStripMenuItem altereACorToolStripMenuItem;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.OpenFileDialog opnfldlgEditor;
+        private System.Windows.Forms.ToolStripMenuItem ajudaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sobreToolStripMenuItem;
     }
 }
 

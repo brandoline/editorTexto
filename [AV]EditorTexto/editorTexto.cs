@@ -10,14 +10,15 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using System.Xml.Linq;
 
 /*
 Desenvolvedor: Helen Brandão;
-Versão: 1.2;
+Versão: 1.3;
 DataInicio: 25/11/2024
-DataFim: 
-Sobre o Código: 
+DataFim: 28/11/2024
+Sobre o Código: Aplicativo de editor de textos com ferramentas básicas. 
  */
 
 namespace _AV_EditorTexto
@@ -29,6 +30,8 @@ namespace _AV_EditorTexto
             InitializeComponent();
         }
 
+    StringReader leitor = null;
+
     // TEXTO
     private void negrito()
         {
@@ -36,6 +39,7 @@ namespace _AV_EditorTexto
             float tamanhoFonte = rtxtbPrincipal.Font.Size;
             bool negrito = rtxtbPrincipal.SelectionFont.Bold;
 
+            // VERIFICA NEGRITO PARA APLICACAO
             if(!negrito)
             {
                 rtxtbPrincipal.SelectionFont = new Font(nomeFonte, tamanhoFonte,FontStyle.Bold);
@@ -48,10 +52,12 @@ namespace _AV_EditorTexto
 
     private void italico()
         {
+
             string nomeFonte = rtxtbPrincipal.Font.Name;
             float tamanhoFonte = rtxtbPrincipal.Font.Size;
             bool italico = rtxtbPrincipal.SelectionFont.Italic;
 
+            // VERIFICA ITALICO PARA APLICACAO
             if (!italico)
             {
                 rtxtbPrincipal.SelectionFont = new Font(nomeFonte, tamanhoFonte, FontStyle.Italic);
@@ -68,6 +74,7 @@ namespace _AV_EditorTexto
             float tamanhoFonte = rtxtbPrincipal.Font.Size;
             bool sublinhado = rtxtbPrincipal.SelectionFont.Underline;
 
+            // VERIFICA SUBLINHADO PARA APLICACAO
             if (!sublinhado)
             {
                 rtxtbPrincipal.SelectionFont = new Font(nomeFonte, tamanhoFonte, FontStyle.Underline);
@@ -80,6 +87,7 @@ namespace _AV_EditorTexto
 
     private void alterarFonte() 
         {
+            // ABRIR CAIXA DE EDITOR DE FONTE
             DialogResult result = fntdlgEditor.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -93,10 +101,10 @@ namespace _AV_EditorTexto
 
     private void alterarCorFonte()
         {
-            DialogResult result = colorDialog1.ShowDialog();
+            DialogResult result = clrdlgEditor.ShowDialog();
             if (result == DialogResult.OK)
             {
-                rtxtbPrincipal.SelectionColor = colorDialog1.Color;
+                rtxtbPrincipal.SelectionColor = clrdlgEditor.Color;
             }
         }
 
@@ -114,6 +122,7 @@ namespace _AV_EditorTexto
         {
             rtxtbPrincipal.SelectionAlignment = HorizontalAlignment.Center;
         }
+
 
     // ARQUIVO
 
@@ -143,25 +152,25 @@ namespace _AV_EditorTexto
     private void abrirArquivo()
         {
             //OPENFILEDIALOG
-            this.openFileDialog1.Multiselect = false;
-            this.openFileDialog1.Title = "Selecionar Arquivos";
-            openFileDialog1.InitialDirectory = @"C:\";
+            this.opnfldlgEditor.Multiselect = false;
+            this.opnfldlgEditor.Title = "Selecionar Arquivos";
+            opnfldlgEditor.InitialDirectory = @"C:\";
 
             // FILTRO
-            openFileDialog1.Filter = "Images (*.TXT)|*.TXT|" + "All files (*.*)|*.*";
-            openFileDialog1.CheckFileExists = true;
-            openFileDialog1.CheckPathExists = true;
-            openFileDialog1.FilterIndex = 1;
-            openFileDialog1.RestoreDirectory = true;
-            openFileDialog1.ReadOnlyChecked = true;
-            openFileDialog1.ShowReadOnly = true;
+            opnfldlgEditor.Filter = "Images (*.TXT)|*.TXT|" + "All files (*.*)|*.*";
+            opnfldlgEditor.CheckFileExists = true;
+            opnfldlgEditor.CheckPathExists = true;
+            opnfldlgEditor.FilterIndex = 1;
+            opnfldlgEditor.RestoreDirectory = true;
+            opnfldlgEditor.ReadOnlyChecked = true;
+            opnfldlgEditor.ShowReadOnly = true;
 
-            DialogResult dr = this.openFileDialog1.ShowDialog();
+            DialogResult dr = this.opnfldlgEditor.ShowDialog();
             if(dr == System.Windows.Forms.DialogResult.OK)
             {
                 try
                 {
-                    FileStream fs = new FileStream(openFileDialog1.FileName, FileMode.Open, FileAccess.Read);
+                    FileStream fs = new FileStream(opnfldlgEditor.FileName, FileMode.Open, FileAccess.Read);
                     StreamReader mStreamReader = new StreamReader(fs);
 
                     // LE O ARQUIVO USANDO STREAMREADER
@@ -194,56 +203,88 @@ namespace _AV_EditorTexto
 
     private void colarArquivo()
         {
-            if(rtxtbPrincipal.SelectionLength > 0)
-            {
                 rtxtbPrincipal.Paste();
-            }
         }
 
     private void sairAplicativo()
         {
             if (!string.IsNullOrEmpty(rtxtbPrincipal.Text))
             {
-                if ((MessageBox.Show("Deseja Sair do aplicativo?", "Sair do aplicativo", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes))
+                if ((MessageBox.Show("Deseja sair do aplicativo?", "Sair do aplicativo", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes))
                 {
                     Application.Exit();
                 }
             }
         }
 
+
     // IMPRESSAO
     private void condiguracoesImpressora()
         {
             try
             {
-                this.pdEditor.Document = this.pdocumentEditor;
-                pdEditor.ShowDialog();
+                this.prntdlgEditor.Document = this.pdocumentEditor;
+                prntdlgEditor.ShowDialog();
             }catch(Exception ex)
             {
                 MessageBox.Show("Erro: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
+    // DOCUMENTO PARA VISUALIZAR E IMPRIMIR
+    private void pdocumentEditor_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            int charactersOnPage = 0;
+            int linesPerPage = 0;
+
+            // VULGO MEDE
+            e.Graphics.MeasureString(this.rtxtbPrincipal.Text, this.Font,
+                e.MarginBounds.Size, StringFormat.GenericTypographic,
+                out charactersOnPage, out linesPerPage);
+
+            // REESCREVE LINHA POR LINHA
+            e.Graphics.DrawString(this.rtxtbPrincipal.Text, this.Font, Brushes.Black,
+            e.MarginBounds, StringFormat.GenericTypographic);
+        }
+
     private void visualizarImpressao()
         {
-            try
+            try 
             {
-                string strTexto = rtxtbPrincipal.Text;
-                StringReader leitor = new StringReader(strTexto);
-                PrintPreviewDialog ppdEditor = new PrintPreviewDialog();
-                var prn = ppdEditor;
+                string strTexto = this.rtxtbPrincipal.Text;
+                leitor = new StringReader(strTexto);
+                PrintPreviewDialog printPreviewDialog = new PrintPreviewDialog();
+                var prn = printPreviewDialog;
                 prn.Document = this.pdocumentEditor;
-                prn.Text = "Visualizando a impressão";
                 prn.WindowState = FormWindowState.Maximized;
                 prn.PrintPreviewControl.Zoom = 1;
                 prn.FormBorderStyle = FormBorderStyle.Fixed3D;
                 prn.ShowDialog();
-            }
-            catch (Exception ex)
+            } catch(Exception ex)
             {
                 MessageBox.Show("Erro : " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+    private void impressao()
+        {
+            prntdlgEditor.Document = pdocumentEditor;
+            string strTexto = this.rtxtbPrincipal.Text;
+            leitor = new StringReader(strTexto);
+            if (prntdlgEditor.ShowDialog() == DialogResult.OK)
+            {
+                this.pdocumentEditor.Print();
+            }
+        }
+
+
+    // AJUDA
+    private void chamarAjuda()
+        {
+            Ajuda ajuda = new Ajuda();
+            ajuda.ShowDialog();
+        }
+
 
     // ACESSOS
         private void negritoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -321,7 +362,7 @@ namespace _AV_EditorTexto
 
         private void imprimirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           // imprimir();
+            impressao();
         }
 
         private void altereACorToolStripMenuItem_Click(object sender, EventArgs e)
@@ -333,6 +374,11 @@ namespace _AV_EditorTexto
         {
             rtxtbPrincipal.Clear();
             rtxtbPrincipal.Focus();
+        }
+
+        private void sobreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            chamarAjuda();
         }
     }
 }

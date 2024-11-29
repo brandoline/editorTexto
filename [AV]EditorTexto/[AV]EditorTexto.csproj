@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ajuda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ajuda.Designer.cs">
+      <DependentUpon>Ajuda.cs</DependentUpon>
+    </Compile>
     <Compile Include="Classes\textoEstilos.cs" />
     <Compile Include="editorTexto.cs">
       <SubType>Form</SubType>
@@ -55,6 +61,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Ajuda.resx">
+      <DependentUpon>Ajuda.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="editorTexto.resx">
       <DependentUpon>editorTexto.cs</DependentUpon>
     </EmbeddedResource>

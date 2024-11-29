@@ -8,3 +8,4 @@ C:\Users\helen_brandao\source\repos\[AV]EditorTexto\[AV]EditorTexto\obj\Debug\[A
 C:\Users\helen_brandao\source\repos\[AV]EditorTexto\[AV]EditorTexto\obj\Debug\[AV]EditorTexto.exe
 C:\Users\helen_brandao\source\repos\[AV]EditorTexto\[AV]EditorTexto\obj\Debug\[AV]EditorTexto.pdb
 C:\Users\helen_brandao\source\repos\[AV]EditorTexto\[AV]EditorTexto\obj\Debug\_AV_EditorTexto.editorTexto.resources
+C:\Users\helen_brandao\source\repos\[AV]EditorTexto\[AV]EditorTexto\obj\Debug\_AV_EditorTexto.Ajuda.resources
